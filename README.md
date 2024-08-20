@@ -20,7 +20,7 @@ Aiming to incrementally learn new classes with only few samples while preserving
 
 ## The proposed method
 
-<img src='./images/Figure1.png' width='2000' height='1500'>
+<img src='./images/Figure1.png' width='2000' height='750'>
 
 For detailed descriptions on the proposed method and experimental results, please refer to the paper.
 
