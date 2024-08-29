@@ -1,22 +1,23 @@
 # CLOSER: Towards Better Representation Learning for Few-Shot Class-Incremental Learning
 #### Junghun Oh*, Sunyong Baik*, and Kyoung Mu Lee
 
+(!Work in Progress!)
+
 Pytorch implementation of **"CLOSER: Towards Better Representation Learning for Few-Shot Class-Incremental Learning"** accepted in **ECCV2024**.
 [Paper]()
 
-If you find this code useful for your research, please consider citing our paper:
+If you find this repo useful for your research, please consider citing our paper:
 ```
 @InProceedings{oh2024closer,
   author = {Oh, Junghun and Baik, Sungyong and Lee, Kyoung Mu},
   title = {CLOSER: Towards Better Representation Learning for Few-Shot Class-Incremental Learning},
-  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  month = {June},
-  year = {2022}
+  booktitle = {IEEE/CVF European conference on computer vision (ECCV)},
+  year = {2024}
 }
 ```
 
 ## Abstract
-Aiming to incrementally learn new classes with only few samples while preserving the knowledge of base (old) classes, few-shot class-incremental learning (FSCIL) faces several challenges, such as overfitting and catastrophic forgetting. Such a challenging problem is often tackled by fixing a feature extractor trained on base classes to reduce the adverse effects of overfitting and forgetting. Under such formulation, our primary focus is representation learning on base classes to tackle the unique challenge of FSCIL: simultaneously achieving the transferability and discriminability of the learned representation. Building upon the recent efforts for enhancing the transferability, such as promoting the spread of features, we find that trying to secure the spread of features within a more confined feature space enables the learned representation to strike a better balance between the transferability and discriminability. Thus, in stark contrast to prior beliefs that the inter-class distance should be maximized, we claim that the CLOSER different classes are, the better for FSCIL. The empirical results and analysis from the perspective of information bottleneck theory justify our simple yet seemingly counter-intuitive representation learning method, raising research questions and suggesting alternative research directions.
+Aiming to incrementally learn new classes with only few samples while preserving the knowledge of base (old) classes, few-shot class-incremental learning (FSCIL) faces several challenges, such as overfitting and catastrophic forgetting. Such a challenging problem is often tackled by fixing a feature extractor trained on base classes to reduce the adverse effects of overfitting and forgetting. Under such formulation, our primary focus is representation learning on base classes to tackle the unique challenge of FSCIL: simultaneously achieving the transferability and discriminability of the learned representation. Building upon the recent efforts for enhancing the transferability, such as promoting the spread of features, we find that trying to secure the spread of features within a more confined feature space enables the learned representation to strike a better balance between the transferability and discriminability. Thus, in stark contrast to priory beliefs that the inter-class distance should be maximized, we claim that the CLOSER different classes are, the better for FSCIL. The empirical results and analysis from the perspective of information bottleneck theory justify our simple yet seemingly counter-intuitive representation learning method, raising research questions and suggesting alternative research directions.
 
 ## The proposed method
 
@@ -27,6 +28,7 @@ For detailed descriptions on the proposed method and experimental results, pleas
 ## Requirements
 - [PyTorch >= version 1.1](https://pytorch.org)
 - tqdm
+- conda env create -n YourEnv -f dependencies.yaml
 
 ## Datasets and pretrained models
 We follow [FSCIL](https://github.com/xyutao/fscil) setting to use the same data index_list for training.  
