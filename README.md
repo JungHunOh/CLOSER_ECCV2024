@@ -26,6 +26,7 @@ For detailed descriptions on the proposed method and experimental results, pleas
 ## Requirements (cuda 12.1)
 ```bash
 conda env create -n YourEnv -f dependencies.yaml
+conda activate YourEnv
 ```
 
 ## Datasets

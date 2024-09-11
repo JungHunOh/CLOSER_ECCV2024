@@ -99,4 +99,3 @@ dependencies:
   - zstd=1.5.5=hc292b87_2
   - pip:
     - tqdm==4.66.5
-prefix: /home/dh6dh/anaconda3/envs/test
