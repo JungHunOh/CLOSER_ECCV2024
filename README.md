@@ -24,29 +24,31 @@ Aiming to incrementally learn new classes with only few samples while preserving
 For detailed descriptions on the proposed method and experimental results, please refer to the paper.
 
 ## Requirements (cuda 12.1)
-- conda env create -n YourEnv -f dependencies.yaml
+```bash
+conda env create -n YourEnv -f dependencies.yaml
+```
 
 ## Datasets
 Please follow the instruction in [CEC](https://github.com/icoz69/CEC-CVPR2021).
 
 ## Experiments
 
-# CIFAR100
+### CIFAR100
 ```bash
 python train.py -project closer -dataset cifar100 -lr_base 0.1 -epochs_base 200 -gpu $gpu --closer --save closer -batch_size_base 128 --ssc_lamb 0.1 --inter_lamb 1
 ```
 
-# miniImageNet
+### miniImageNet
 ```bash
 python train.py -project closer -dataset mini_imagenet -lr_base 0.1 -epochs_base 200 -gpu $gpu --closer --save closer -batch_size_base 128 --ssc_lamb 0.1 --inter_lamb 0.5
 ```
 
-# CUB200
+### CUB200
 ```bash
 python train.py -project closer -dataset cub200 -lr_base 0.005 -epochs_base 50 -gpu $gpu --closer --save closer -batch_size_base 256 --ssc_lamb 0.01 --inter_lamb 1.5
 ```
 
-See the effect of inter-class distance minimization loss by controlling `inter_lamb'!
+See the effect of inter-class distance minimization loss by controlling the 'inter_lamb' argument!
 
 ## Acknowledgment
 Our implementation is based on the following repositories:
