@@ -52,7 +52,7 @@ python train.py -project closer -dataset cub200 -lr_base 0.005 -epochs_base 50 -
 See the effect of inter-class distance minimization loss by controlling the 'inter_lamb' argument!
 
 ## Acknowledgment
-Our implementation is based on the following repositories:
+We reference the following repositories:
 - [fscil](https://github.com/xyutao/fscil)
 - [CEC](https://github.com/icoz69/CEC-CVPR2021)
 - [corinfomax-ssl](https://github.com/serdarozsoy/corinfomax-ssl)
