@@ -36,17 +36,17 @@ Please follow the instruction in [CEC](https://github.com/icoz69/CEC-CVPR2021).
 
 ### CIFAR100
 ```bash
-python train.py -project closer -dataset cifar100 -lr_base 0.1 -epochs_base 200 -gpu $gpu --closer --save closer -batch_size_base 128 --ssc_lamb 0.1 --inter_lamb 1
+python train.py -project closer -dataset cifar100 -lr_base 0.1 -epochs_base 200 -gpu $gpu --closer --save closer -batch_size_base 128 -seed 1 --ssc_lamb 0.1 --inter_lamb 1 --temp 32
 ```
 
 ### miniImageNet
 ```bash
-python train.py -project closer -dataset mini_imagenet -lr_base 0.1 -epochs_base 200 -gpu $gpu --closer --save closer -batch_size_base 128 --ssc_lamb 0.1 --inter_lamb 0.5
+python train.py -project closer -dataset mini_imagenet -lr_base 0.1 -epochs_base 200 -gpu $gpu --closer --save closer -batch_size_base 128 -seed 1 --ssc_lamb 0.1 --inter_lamb 0.5 --temp 32
 ```
 
 ### CUB200
 ```bash
-python train.py -project closer -dataset cub200 -lr_base 0.005 -epochs_base 50 -gpu $gpu --closer --save closer -batch_size_base 256 --ssc_lamb 0.01 --inter_lamb 1.5
+python train.py -project closer -dataset cub200 -lr_base 0.005 -epochs_base 50 -gpu $gpu --closer --save closer -batch_size_base 256 -seed 1 --ssc_lamb 0.01 --inter_lamb 1.5 --temp 32
 ```
 
 See the effect of inter-class distance minimization loss by controlling the 'inter_lamb' argument!

@@ -63,7 +63,7 @@ def get_command_line_parser():
 
     parser.add_argument('--num_aug', type=int, default=2)
     parser.add_argument('--supcon_temp', type=float, default=32)
-    parser.add_argument('--temp', type=float, default=16)
+    parser.add_argument('--temp', type=float, default=32)
     parser.add_argument('--inter_lamb', type=float, default=1)
     parser.add_argument('--ssc_lamb', type=float, default=0.1)
 
