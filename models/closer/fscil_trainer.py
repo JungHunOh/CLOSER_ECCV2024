@@ -32,7 +32,7 @@ class FSCILTrainer(Trainer):
         if self.args.dataset != 'cub200':
             optimizer = torch.optim.SGD(self.model.parameters(), lr=self.args.lr_base, weight_decay=self.args.decay, momentum=0.9, nesterov=True)
         else:
-            param_lists = [{'params': self.model.module.encoder.parameters(), 'lr': self.args.lr_base},{'params': self.model.module.fc1.parameters(), 'lr': 0.1}]
+            param_lists = [{'params': self.model.module.encoder.parameters(), 'lr': self.args.lr_base},{'params': self.model.module.classifier.parameters(), 'lr': 0.1}]
             optimizer = torch.optim.SGD(param_lists, weight_decay=self.args.decay, momentum=0.9, nesterov=True)
         
         scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[self.args.epochs_base//10*8,self.args.epochs_base//10*9], gamma=self.args.gamma)
@@ -67,7 +67,6 @@ class FSCILTrainer(Trainer):
                 optimizer, scheduler = self.get_optimizer_base()
 
                 for epoch in range(args.epochs_base):
-                    print(args.save)
                     start_time = time.time()
                     # train base sess
                     

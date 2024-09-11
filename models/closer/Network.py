@@ -23,19 +23,16 @@ class MYNET(nn.Module):
             self.encoder = resnet20()
             self.feature_dim = 64
 
-            self.fc1 = nn.Linear(self.feature_dim, self.args.num_classes, bias=False)
+            self.classifier = nn.Linear(self.feature_dim, self.args.num_classes, bias=False)
 
             self.num_features = 640
             
         if self.args.dataset in ['mini_imagenet']:
-            #self.encoder = resnet12()
-            #self.feature_dim = 640
-
             self.encoder = resnet18(False, args)
             self.encoder.fc = nn.Identity()
             self.feature_dim = 512
 
-            self.fc1 = nn.Linear(self.feature_dim, self.args.num_classes, bias=False)
+            self.classifier = nn.Linear(self.feature_dim, self.args.num_classes, bias=False)
 
         elif self.args.dataset == 'cub200':
             self.encoder = resnet18(True, args)  # pretrained=True follow TOPIC, models for cub is imagenet pre-trained. https://github.com/xyutao/fscil/issues/11#issuecomment-687548790
@@ -43,7 +40,7 @@ class MYNET(nn.Module):
             self.num_features = 512
             self.encoder.fc = nn.Identity()
 
-            self.fc1 = nn.Linear(self.feature_dim, self.args.num_classes, bias=False)
+            self.classifier = nn.Linear(self.feature_dim, self.args.num_classes, bias=False)
 
         self.session = 0
         self.test = False
@@ -52,7 +49,7 @@ class MYNET(nn.Module):
         inp = x
 
         x = self.encoder(x)
-        fc = self.fc1.weight
+        fc = self.classifier.weight
 
         x = F.linear(F.normalize(x, p=2, dim=-1), F.normalize(fc, p=2, dim=-1))
         x = self.args.temperature * x
@@ -110,4 +107,4 @@ class MYNET(nn.Module):
         labels = torch.cat(labels,dim=0)
 
         for ii in range(labels.unique().shape[0]):
-            self.fc1.weight.data[labels.min()+ii] = feats[labels==labels.min()+ii].mean(dim=0)
+            self.classifier.weight.data[labels.min()+ii] = feats[labels==labels.min()+ii].mean(dim=0)

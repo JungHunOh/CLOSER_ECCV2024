@@ -20,7 +20,6 @@ def get_command_line_parser():
     parser.add_argument('-epochs_base', type=int, default=100)
     parser.add_argument('-epochs_new', type=int, default=100)
     parser.add_argument('-lr_base', type=float, default=0.1)
-    parser.add_argument('-lr_new', type=float, default=0.1)
     parser.add_argument('-schedule', type=str, default='Step',
                         choices=['Step', 'Milestone'])
     parser.add_argument('-milestones', nargs='+', type=int, default=[60, 70])
@@ -62,53 +61,11 @@ def get_command_line_parser():
 
     parser.add_argument('--eval_only', action='store_true', default=False)
 
-    parser.add_argument('--support_shot', type=int, default=5)
-    parser.add_argument('--support_way', type=int, default=5)
-    parser.add_argument('--query_base_shot', type=int, default=10)
-    parser.add_argument('--query_base_way', type=int, default=20)
-    parser.add_argument('--query_new_shot', type=int, default=10)
-    parser.add_argument('--lr_fc', type=float, default=0.1)
-
-    parser.add_argument('--t_depths', type=int, default=5)
-    parser.add_argument('--t_heads', type=int, default=1)
-
-    parser.add_argument('--plot', action='store_true', default=False)
-
-    parser.add_argument('--all_lambda', type=float, default=1)
-    parser.add_argument('--normalize', action='store_true', default=False)
-    parser.add_argument('--lambda_base', type=float, default=1)
-    parser.add_argument('--lambda_new', type=float, default=1)
-    parser.add_argument('--train_backbone', action='store_true', default=False)
-    parser.add_argument('--channel_shuffle', action='store_true', default=False)
-
-    parser.add_argument('--base_K', type=int, default=10000)
-    parser.add_argument('--new_K', type=int, default=100)
-    parser.add_argument('--linkage_mode', type=str, default='single', choices=['single', 'complete', 'average', 'weighted', 'centroid', 'median', 'ward'])
-    parser.add_argument('--cluster_mode', type=str, default='maxclust', choices=['maxclust', 'inconsistent', 'distance', 'monocrit', 'maxclust_monocrit'])
-
-    parser.add_argument('--adam', action='store_true', default=False)
-    parser.add_argument('--score', action='store_true', default=False)
-    parser.add_argument('--warmup', type=int, default=-1)
-    parser.add_argument('--split', type=int, default=1)
-
-    parser.add_argument('--train_way', type=int, default=20)
-    parser.add_argument('--train_query_shot', type=int, default=5)
-    parser.add_argument('--train_shot', type=int, default=5)
-    parser.add_argument('--mp', action='store_true', default=False)
-    parser.add_argument('--iter_per_epoch', type=int, default=50)
-
-    parser.add_argument('--num_inds', type=int, default=32)
-    parser.add_argument('--dim_hidden', type=int, default=512)
-    parser.add_argument('--mode', type=int, default=-1)
-
-    parser.add_argument('--num_aug', type=int, default=5)
-    parser.add_argument('--supcon_temp', type=float, default=0.1)
-    parser.add_argument('--ce_temp', type=float, default=16)
-    parser.add_argument('--ce1_temp', type=float, default=16)
-    parser.add_argument('--fc_dim', type=int, default=4096)
-    parser.add_argument('--cos_lamb', type=float, default=1)
-    parser.add_argument('--ssl_lamb', type=float, default=0.1)
-    parser.add_argument('--ce_lamb', type=float, default=1)
+    parser.add_argument('--num_aug', type=int, default=2)
+    parser.add_argument('--supcon_temp', type=float, default=32)
+    parser.add_argument('--temp', type=float, default=16)
+    parser.add_argument('--inter_lamb', type=float, default=1)
+    parser.add_argument('--ssc_lamb', type=float, default=0.1)
 
     parser.add_argument('--closer', action='store_true', default=False)
 

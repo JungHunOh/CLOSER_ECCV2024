@@ -36,7 +36,7 @@ def base_train(model, trainloader, optimizer, scheduler, epoch, args):
             feats = model.module.encoder(data)
             
             feats = F.normalize(feats,dim=-1)
-            logits = F.linear(feats, F.normalize(model.module.fc1.weight[:args.base_class],dim=-1)) * args.ce1_temp
+            logits = F.linear(feats, F.normalize(model.module.classifier.weight[:args.base_class],dim=-1)) * args.temp
             ce_loss = F.cross_entropy(logits, train_label.repeat(logits.shape[0]//B))
             
             supcon_loss = supcon_criterion(feats.reshape(1+num_aug,B,-1).permute(1,0,2))
@@ -50,7 +50,7 @@ def base_train(model, trainloader, optimizer, scheduler, epoch, args):
             intra_loss = (cossim_mat * (mask==1)).sum() / (mask==1).sum() # intra class
             inter_loss = (cossim_mat * (mask==-1)).sum() / (mask==-1).sum() # inter class
 
-            loss = ce_loss + supcon_loss * args.ssl_lamb - inter_loss*args.cos_lamb
+            loss = ce_loss + supcon_loss * args.ssc_lamb - inter_loss*args.inter_lamb
             acc = count_acc(logits, train_label.repeat(logits.shape[0]//B))
 
             supcon += supcon_loss.item()
@@ -61,7 +61,7 @@ def base_train(model, trainloader, optimizer, scheduler, epoch, args):
             feats = model.module.encoder(data)
             
             feats = F.normalize(feats,dim=-1)
-            logits = F.linear(feats, F.normalize(model.module.fc1.weight[:args.base_class],dim=-1))*args.ce1_temp
+            logits = F.linear(feats, F.normalize(model.module.classifier.weight[:args.base_class],dim=-1)) * args.temp
             
             ce_loss = F.cross_entropy(logits, train_label.repeat(cosine.shape[0]//B))
             
@@ -118,7 +118,7 @@ def replace_base_fc(trainset, transform, model, args):
 
     proto_list = torch.stack(proto_list, dim=0)
     
-    model.module.fc1.weight.data[:args.base_class] = proto_list
+    model.module.classifier.weight.data[:args.base_class] = proto_list
 
     return model
 
