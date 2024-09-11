@@ -56,7 +56,7 @@ def get_command_line_parser():
     # about training
     parser.add_argument('-gpu', default='0,1,2,3')
     parser.add_argument('-num_workers', type=int, default=12)
-    parser.add_argument('-seed', type=int, default=1)
+    parser.add_argument('-seed', type=int, default=0)
     parser.add_argument('-debug', action='store_true')
 
     parser.add_argument('--eval_only', action='store_true', default=False)
