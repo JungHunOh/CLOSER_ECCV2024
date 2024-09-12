@@ -21,12 +21,11 @@ class FSCILTrainer(Trainer):
 
         if self.args.model_dir is not None:
             print('Loading init parameters from: %s' % self.args.model_dir)
-            self.best_model_dict = torch.load(self.args.model_dir)['params']
+            self.model.load_state_dict(torch.load(self.args.model_dir)['params'])
         else:
             print('random init params')
             if args.start_session > 0:
                 print('WARING: Random init weights for new sessions!')
-            self.best_model_dict = deepcopy(self.model.state_dict())
 
     def get_optimizer_base(self):
         if self.args.dataset != 'cub200':
@@ -53,7 +52,6 @@ class FSCILTrainer(Trainer):
 
         # init train statistics
         result_list = [args]
-        #self.model.load_state_dict(self.best_model_dict)
 
         poses = ['enc']
 
@@ -67,13 +65,10 @@ class FSCILTrainer(Trainer):
                 optimizer, scheduler = self.get_optimizer_base()
 
                 for epoch in range(args.epochs_base):
+                    
                     start_time = time.time()
-                    # train base sess
                     
-                    if not self.args.eval_only:
-                        tl, ta = base_train(self.model, trainloader, optimizer, scheduler, epoch, args)
-                    
-                    # test model with all seen class
+                    tl, ta = base_train(self.model, trainloader, optimizer, scheduler, epoch, args)
                     tsl, tsa = test(self.model, testloader, epoch, args, session)
 
                     # save better model
@@ -127,7 +122,6 @@ class FSCILTrainer(Trainer):
                 save_model_dir = os.path.join(args.save_path, 'session' + str(session) + '_max_acc.pth')
                 if session == args.sessions-1:
                     torch.save(dict(params=self.model.state_dict()), save_model_dir)
-                self.best_model_dict = deepcopy(self.model.state_dict())
                 print('Saving model to :%s' % save_model_dir)
                 print('  test acc={:.3f}'.format(self.trlog['max_acc'][session]))
 

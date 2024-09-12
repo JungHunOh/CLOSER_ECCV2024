@@ -69,6 +69,8 @@ def get_command_line_parser():
 
     parser.add_argument('--closer', action='store_true', default=False)
 
+    parser.add_argument('--pretrained_dir', type=str)
+
     return parser
 
 
@@ -80,8 +82,7 @@ if __name__ == '__main__':
     args.num_gpu = set_gpu(args)
 
     if args.eval_only:
-        args.model_dir = f'./checkpoint/{args.dataset}/base/{args.save}/session0_max_acc.pth'
-        args.epochs_base = 1
+        args.epochs_base = 0
 
     trainer = importlib.import_module('models.%s.fscil_trainer' % (args.project)).FSCILTrainer(args)
     trainer.train()
