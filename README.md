@@ -30,7 +30,7 @@ conda activate YourEnv
 ```
 
 ## Datasets
-Please follow the instruction in [CEC](https://github.com/icoz69/CEC-CVPR2021).
+Please follow the instruction in [CEC](https://github.com/icoz69/CEC-CVPR2021?tab=readme-ov-file#datasets-and-pretrained-models).
 
 ## Experiments
 
