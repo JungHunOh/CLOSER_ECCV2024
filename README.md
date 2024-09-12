@@ -17,13 +17,13 @@ If you find this repo useful for your research, please consider citing our paper
 ## Abstract
 Aiming to incrementally learn new classes with only few samples while preserving the knowledge of base (old) classes, few-shot class-incremental learning (FSCIL) faces several challenges, such as overfitting and catastrophic forgetting. Such a challenging problem is often tackled by fixing a feature extractor trained on base classes to reduce the adverse effects of overfitting and forgetting. Under such formulation, our primary focus is representation learning on base classes to tackle the unique challenge of FSCIL: simultaneously achieving the transferability and discriminability of the learned representation. Building upon the recent efforts for enhancing the transferability, such as promoting the spread of features, we find that trying to secure the spread of features within a more confined feature space enables the learned representation to strike a better balance between the transferability and discriminability. Thus, in stark contrast to priory beliefs that the inter-class distance should be maximized, we claim that the CLOSER different classes are, the better for FSCIL. The empirical results and analysis from the perspective of information bottleneck theory justify our simple yet seemingly counter-intuitive representation learning method, raising research questions and suggesting alternative research directions.
 
-## The proposed method
+## CLOSER
 
 <img src='./images/Figure1.png' width='2000' height='800'>
 
 For detailed descriptions on the proposed method and experimental results, please refer to the paper.
 
-## Requirements (cuda 12.1)
+## Setup (cuda 12.1)
 ```bash
 conda env create -n YourEnv -f dependencies.yaml
 conda activate YourEnv
