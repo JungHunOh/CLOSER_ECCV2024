@@ -52,7 +52,7 @@ python train.py -project closer -dataset cub200 -lr_base 0.005 -epochs_base 50 -
 See the effect of inter-class distance minimization loss by controlling the 'inter_lamb' argument!
 
 ## Trained models
-We upload the trained models with CLOSER [here](https://drive.google.com/drive/folders/10STnlGnLPhxJs4_UMP-nOg54p1SBY_KY?usp=sharing).
+We uploaded the trained models using CLOSER [here](https://drive.google.com/drive/folders/10STnlGnLPhxJs4_UMP-nOg54p1SBY_KY?usp=sharing).
 
 For evaluation the models:
 ```bash
