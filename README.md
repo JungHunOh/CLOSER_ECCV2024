@@ -1,8 +1,8 @@
 # CLOSER: Towards Better Representation Learning for Few-Shot Class-Incremental Learning
 #### Junghun Oh*, Sunyong Baik*, and Kyoung Mu Lee
 
-Official Pytorch implementation of **"CLOSER: Towards Better Representation Learning for Few-Shot Class-Incremental Learning"** accepted in **ECCV2024**.
-[Paper]()
+Official Pytorch implementation of **"CLOSER: Towards Better Representation Learning for Few-Shot Class-Incremental Learning"** accepted at **ECCV2024**.
+[Paper](https://arxiv.org/abs/2410.05627)
 
 If you find this repo useful for your research, please consider citing our paper:
 ```
