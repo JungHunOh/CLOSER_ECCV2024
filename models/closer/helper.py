@@ -63,10 +63,10 @@ def base_train(model, trainloader, optimizer, scheduler, epoch, args):
             feats = F.normalize(feats,dim=-1)
             logits = F.linear(feats, F.normalize(model.module.classifier.weight[:args.base_class],dim=-1)) * args.temp
             
-            ce_loss = F.cross_entropy(logits, train_label.repeat(cosine.shape[0]//B))
+            ce_loss = F.cross_entropy(logits, train_label.repeat(logits.shape[0]//B))
             
             loss = ce_loss
-            acc = count_acc(cosine, train_label.repeat(cosine.shape[0]//B))
+            acc = count_acc(logits, train_label.repeat(logits.shape[0]//B))
 
             ce += ce_loss.item()
         
